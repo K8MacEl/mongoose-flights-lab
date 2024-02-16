@@ -13,7 +13,7 @@ module.exports = {
 async function create(req, res){
 	console.log(req.body, " <- is the contents of our form!")
     //there are no booleans in the flight schema-this was copied from movies-may cause issue?
-	req.body.departureDate = !!req.body.departureDate // !! forces the value to a boolean
+	//req.body.departureDate = !!req.body.departureDate // !! forces the value to a boolean
 	  // remove any whitespace at start and end of cast
 	req.body.cast = req.body.cast.trim();
 	  // split cast into an array if it's not an empty string - using a regular expression as a separator

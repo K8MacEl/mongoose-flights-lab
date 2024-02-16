@@ -11,11 +11,14 @@
 
 	<h2>Enter a New Flight</h2>
 	<form action="/flights" method="POST">
-		<label>Title:
-			<input type="text" name="title">
 		</label><br>
 		<label>Airline:
-			<input type="text" name="airlineName">
+            <select name="airlineName">
+                <option value="American">American</option>
+				<option value="Southwest">Southwest</option>
+				<option value="United">United</option>
+				<option value="Delta">Delta</option>
+			</select>
 		</label><br>
 		<label>Airport
 			<select name="airportName">

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<h2>Enter a New Flight</h2>
+	<form action="/flights" method="POST">
+		<label>Title:
+			<input type="text" name="title">
+		</label><br>
+		<label>Airline:
+			<input type="text" name="airlineName">
+		</label><br>
+		<label>Airport
+			<select name="airportName">
+				<option value="AUS">AUS</option>
+				<option value="DFW">DFW</option>
+				<option value="DEN">DEN</option>
+				<option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+			</select>
+		</label><br>
+		<label>Flight Number (Between 10-9999):
+			<input type="number" name="flightNumber">
+		</label><br>
+		<label>Departs:
+			<input type="date" name="departureDate">
+		</label><br>
+		<button type="submit">Add Flight</button>
+	</form>
+
+</body>
+
+</html>

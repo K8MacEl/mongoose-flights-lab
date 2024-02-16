@@ -20,7 +20,8 @@ const flightSchema = new Schema({
   flightNo: {
   type: Number,
   min: 10,
-  max: 9999
+  max: 9999,
+  require: true
   },
   //how to add default one year from today 
   departs: {

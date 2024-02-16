@@ -1,35 +1,34 @@
 // import our model so we can talk to the database and perfomr
 // our CRUD operations
-const Flight = require('../models/flight')
+// const Flight = require('../models/flight');
+// const newFlight = new Flight ();
+// //default date obtained
+// const dt = newFlight.departs
+// let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
+// departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
+// res.render('flights/new', { departsDate });
+const FlightModel = require('../models/flight')
 
 module.exports = {
-	new: newFlight,
-	create: create
+	newFlightForm: newFlight,
+	create
 	// or 
 	// create
 }
 
-function create(req, res) {
-    //converts required field of flight number to a boolean
-    req.body.flightNumber = !! req.body.flightNumber;
-    //remove any whitespacvce at start and end of cast
-    req.body.cast = req.body.cast.trim();
-    const flight = new Flight(req.body);
-    flight.save(function(err) {
-        //if we don't redirect, the new page will be shown
-        //with /flights in the address bar
-        if (err) return res.redirect('/flights/new');
-        console.log(flight);
-        //for now, redirect right back to new.ejs
-        res.redirect('/flights/new');
-
-    });
-
+async function create(req, res) {
+    //wORK ON THIS SECTION
+ try {
+    const createdFlightDoc = await FlightModel.create(req.body);
+    console.log(createdFlightDoc)
+    //for now redirect to new page
+    res.redirect('/flights/new')
+ } catch(err){
+    console.log(err)
+    res.redirect('/flights/new')
+    }
 }
 
-function newFlight(req, res){
-
-	// res.render looks in our 
-	// views folder for the ejs page
-	res.render('flights/new')
+function newFlight(req, res){ 
+    res.render('flights/new')
 }

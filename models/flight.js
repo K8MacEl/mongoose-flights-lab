@@ -9,29 +9,27 @@ const Schema = mongoose.Schema;
 // in our mongodb movies collection
 const flightSchema = new Schema({
   airline: {
-    type: String,
-    enum: ['American', 'Southwest', 'United', 'Delta']
+    type: String
   },
   airport: {
     type: String,
-    //need to learn how to add DEN as a default
-    enum: ['AUS','DFW','DEN','LAX','SAN']
+    default: 'DEN' //default set to DEN
   },
   flightNo: {
-  type: Number,
-  min: 10,
-  max: 9999,
-  require: true
+    type: Number,
+    min: 10,
+    max: 9999,
+    required: true
   },
-  //how to add default one year from today 
   departs: {
     type: Date,
-},
-// {
-//     timestamps: true
-// }
-})
+    //terminal is showing a syntax error with the default, commnented out for now
+    //default: () => new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+  }
+}, {
+     timestamps: true
+});
 
 // Compile the schema into a model and export it
-// Movie, creates a movies collection in our movies database
+// Flight, creates a flights collection in our flights database
 module.exports = mongoose.model('Flight', flightSchema);

@@ -13,7 +13,7 @@ const flightSchema = new Schema({
   },
   airport: {
     type: String,
-    default: 'DEN' //default set to DEN
+    default: 'DEN' //default set to DEN but need help here and I think on controllers to make this work
   },
   flightNo: {
     type: Number,
@@ -23,8 +23,8 @@ const flightSchema = new Schema({
   },
   departs: {
     type: Date,
-    //terminal is showing a syntax error with the default, commnented out for now
-    //default: () => new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    //default should be one year from today but is pulling as null I think the issue is in controllers
+    default: () => new Date(new Date().setFullYear(new Date().getFullYear() + 1))
   }
 }, {
      timestamps: true

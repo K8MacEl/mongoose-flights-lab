@@ -26,9 +26,9 @@ const flightSchema = new Schema({
     //default should be one year from today but is pulling as null I think the issue is in controllers
     default: () => new Date(new Date().setFullYear(new Date().getFullYear() + 1))
   }
-}, {
-     timestamps: true
-});
+}
+    
+);
 
 // Compile the schema into a model and export it
 // Flight, creates a flights collection in our flights database

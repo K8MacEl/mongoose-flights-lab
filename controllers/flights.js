@@ -11,8 +11,25 @@ const FlightModel = require('../models/flight')
 // res.render('flights/new', { departsDate });
 module.exports = {
 	newFlightForm: newFlight,
-	create
+	create,
+    index
 }
+async function index(req, res){
+    //want to send an ejs page will all the flights to browser
+    try {
+        //we want our model to go to teh date and get all the flights
+        //the .find({}) is a mongoose model query method
+        const flightDocumentsFromTheDB = await FlightModel.find({})
+        console.log(flightDocumentsFromTheDB)
+        //then we want to send an ejs page with all flights to the boswer
+        //flights/index is lopoking in the views folder for the ejs page
+        res.render('flights/index', {flightDocs: flightDocumentsFromTheDB})
+    } catch(err){
+        console.log(err)
+        res.redirect('/')
+    }
+}
+
 async function create(req, res) {
  try {
     const createdFlightDoc = await FlightModel.create(req.body);

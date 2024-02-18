@@ -15,12 +15,13 @@ async function index(req, res){
     try {
         //we want our model to go to teh date and get all the flights
         //the .find({}) is a mongoose model query method
-        const flightDocumentsFromTheDB = await FlightModel.find({})
+        //WHY IS THE SORT DOING SOMETHING BUT IS NOT SORTING BY DATE?
+        const flightDocumentsFromTheDB = await FlightModel.find({}).sort({departs: 1});
         console.log(flightDocumentsFromTheDB)
         //then we want to send an ejs page with all flights to the boswer
-        //flights/index is lopoking in the views folder for the ejs page
-        res.render('flights/index', {flightDocs: flightDocumentsFromTheDB})
-    } catch(err){
+        //flights/index is looking in the views folder for the ejs page
+        res.render('flights/index', {flightDocs: flightDocumentsFromTheDB});
+        } catch(err){
         console.log(err)
         res.redirect('/')
     }

@@ -17,10 +17,25 @@ async function index(req, res){
         //the .find({}) is a mongoose model query method
         //WHY IS THE SORT DOING SOMETHING BUT IS NOT SORTING BY DATE?
         const flightDocumentsFromTheDB = await FlightModel.find({}).sort({departs: 1});
-        console.log(flightDocumentsFromTheDB)
+        //console.log(flightDocumentsFromTheDB)
+        //use map method to loop through flight documentsfromthedb for each document we can add a 
+        //property that determines the the color of the tb
+        const modifiedFlights = flightDocumentsFromTheDB.map(function(flight){  
+            const todaysDate = new Date() 
+            //departs
+            //return 
+            //console.log(todaysDate)
+            const isPassed = flight.departs < todaysDate;
+            //using spread operator to copy the flight object
+            //when we copy the flight doc nesting is occuring so properties are in an _doc property
+            //adding isPassed to the object
+            return {...flight._doc, isPassed}
+            
+        })
+        console.log(modifiedFlights)
         //then we want to send an ejs page with all flights to the boswer
         //flights/index is looking in the views folder for the ejs page
-        res.render('flights/index', {flightDocs: flightDocumentsFromTheDB});
+        res.render('flights/index', {flightDocs: modifiedFlights});
         } catch(err){
         console.log(err)
         res.redirect('/')

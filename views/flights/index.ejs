@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
 	<title>Mongoose-Flights</title>
 </head>
 
@@ -33,12 +34,14 @@
 				<td>
 					<%= m.flightNo %>
 				</td>
-				<td>
-					<%= m.departs%></td>
+				<td class="<%= m.isPassed ? "past-departure": "" %>">
+					<%= m.departs%>
+                </td>
 			</tr>
 			<!-- Close the forEach using EJS here -->
 			<% }) %>
 		</tbody>
+
 	</table>
 
 </body>

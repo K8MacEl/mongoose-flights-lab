@@ -6,7 +6,31 @@ body {
 a {
   color: #00B7FF;
 }
-
+.title{
+  padding: 1rem;
+}
+.navbar {
+  background-color: rgb(216, 213, 213);
+  height: 2rem;
+  padding: .75rem;
+  font-size: large;
+}
     .past-departure {
         color: red;
+    }
+
+    tbody{
+      text-align: center;
+  
+    }
+
+    .flightListTitle {
+      background-color: rgb(216, 213, 213);
+    }
+  
+    .newflight {
+      background-color: rgb(216, 213, 213);
+      height: 2rem;
+      padding: .75rem;
+      font-size: large;
     }

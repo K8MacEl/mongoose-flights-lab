@@ -5,6 +5,18 @@ const mongoose = require('mongoose')
 //optional shortcut to mongoose.Shema class
 const Schema = mongoose.Schema;
 
+const destinationsSchema = new Schema({
+
+airport: {
+  type: String,
+},
+
+arrival: {
+  type: Date
+}
+
+})
+
 // Enforces the shape of the documents (Think of objects)
 // in our mongodb movies collection
 const flightSchema = new Schema({
@@ -25,6 +37,9 @@ const flightSchema = new Schema({
     type: Date,
     //default should be one year from today but is pulling as null I think the issue is in controllers
     default: () => new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+  },
+  destinations: {
+    type: [destinationsSchema]
   }
 }
     

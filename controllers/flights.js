@@ -8,8 +8,29 @@ const FlightModel = require('../models/flight')
 module.exports = {
 	newFlightForm: newFlight,
 	create,
-    index
+    index,
+    show
 }
+
+async function show(req, res){
+    try {
+        // req.params.id value is coming from the browsers request
+		// the name `.id` is defined in the routes/flights show route
+		// router.get('/:id', flightCtrl.show);
+        const flightDocumentsFromTheDB = await FlightModel.findById(req.params.id)
+        //after find flightdocumentfromtheDB look at aiports property 
+        console.log(flightDocumentsFromTheDB)
+        //express is changing the ejs into html and senindg it to the browser
+        //the key flight becomes a variable name in show.ejs
+        res.render("flights/show", { flight: flightDocumentsFromTheDB });
+    } catch (err){
+        res.send(err);
+    }
+
+    
+}
+
+
 async function index(req, res){
     //want to send an ejs page will all the flights to browser
     try {
@@ -47,7 +68,7 @@ async function create(req, res) {
     const createdFlightDoc = await FlightModel.create(req.body);
     console.log(createdFlightDoc)
     //for now redirect to new page
-    res.redirect('/flights/new')
+    res.redirect('/flights/')
  } catch(err){
     console.log(err)
     res.redirect('/flights/new')

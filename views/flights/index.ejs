@@ -37,6 +37,7 @@
 				<td class="<%= m.isPassed ? "past-departure": "" %>">
 					<%= m.departs%>
                 </td>
+				<td><a href="/flights/<%= m._id %>">DETAILS</a></td>
 			</tr>
 			<!-- Close the forEach using EJS here -->
 			<% }) %>

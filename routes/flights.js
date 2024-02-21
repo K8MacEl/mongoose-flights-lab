@@ -10,4 +10,6 @@ router.get('/new', flightCtrl.newFlightForm)
 //Post request to /movies
 router.post('/', flightCtrl.create)
 
+router.get('/:id', flightCtrl.show)
+
 module.exports = router;

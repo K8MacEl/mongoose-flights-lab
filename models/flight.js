@@ -5,6 +5,13 @@ const mongoose = require('mongoose')
 //optional shortcut to mongoose.Shema class
 const Schema = mongoose.Schema;
 
+const ticketSchema = new Schema({
+
+
+
+  
+})
+
 const destinationsSchema = new Schema({
 
 airport: {

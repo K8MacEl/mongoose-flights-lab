@@ -1,5 +1,6 @@
 // import our model so we can talk to the database and perfomr
 // our CRUD operations
+const flight = require('../models/flight');
 const FlightModel = require('../models/flight')
 
 //---------------FLIGHT DEFAULTS COMMENTED OUT NEED TA HELP HERE--------------//
@@ -17,7 +18,7 @@ async function show(req, res){
         // req.params.id value is coming from the browsers request
 		// the name `.id` is defined in the routes/flights show route
 		// router.get('/:id', flightCtrl.show);
-        const flightDocumentsFromTheDB = await FlightModel.findById(req.params.id)
+        const flightDocumentsFromTheDB = await FlightModel.findById(req.params.id);
         //after find flightdocumentfromtheDB look at aiports property 
         console.log(flightDocumentsFromTheDB)
         //express is changing the ejs into html and senindg it to the browser
@@ -25,9 +26,7 @@ async function show(req, res){
         res.render("flights/show", { flight: flightDocumentsFromTheDB });
     } catch (err){
         res.send(err);
-    }
-
-    
+    }    
 }
 
 

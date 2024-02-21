@@ -7,8 +7,8 @@ module.exports = {
 async function create(req, res){
     //to find the flight
     try {
-        //req.params.id comes from the http request from the reviews form on the fllights index page
-        const flightDoc = await FlightModel.findById(req.params.id);  
+        //req.params.id comes from the http request from the reviews form on the flights index page
+        const flightDoc = await FlightModel.findById(req.params.id); 
         //flightDocs is the flight from the database--CHECK ON THIS IF ERROR IS THROWN
         //then add the destination to the flight's array      
         flightDoc.destinations.push(req.body);

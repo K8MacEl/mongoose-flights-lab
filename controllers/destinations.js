@@ -12,6 +12,9 @@ async function create(req, res){
         //flightDocs is the flight from the database--CHECK ON THIS IF ERROR IS THROWN
         //then add the destination to the flight's array
         flightDoc.destinations.push(req.body);
+        // Sort the destinations array
+        flightDoc.destinations.sort({arrival: 1});
+
         //to the destinations array
         //since we are changing the flightDocs we have to tell the database
         await flightDoc.save() //this tells the db we need to add the destination

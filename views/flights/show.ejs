@@ -6,53 +6,54 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Show</title>
 	<link rel='stylesheet' href='/stylesheets/style.css' />
+    <nav>
+        <ul class="navbar">
+            <a href="/">HOME PAGE</a>  
+            <a href="/flights/">ALL FLIGHTS</a>
+            <a href="/flights/new">NEW FLIGHT</a>
+        </ul>
 </head>
 <body>
-    <nav>
-		<ul class="navbar">
-			<a href="/">HOME PAGE</a>  
-			<a href="/flights/">ALL FLIGHTS</a>
-            <a href="/flights/new">NEW FLIGHT</a>
-		</ul>
 	</nav>	
     </div>
 	<main>
+        <section id="header"><h1>MONGOOSE FLIGHTS</h1></section>
 		<section id="show-page">
-			<div>Airline: </div>
+			<div><strong>Airline:</strong> </div>
 			<div>
 				<%= flight.airline %>
 			</div>
-			<div>Airport: </div>
+			<div><strong>Airport:</strong></div>
 			<div>
 				<%= flight.airport %>
 			</div>
-			<div>Flight Number: </div>
+			<div><strong>Flight Number:</strong></div>
 			<div>
 				<%= flight.flightNo %>
 			</div>
-			<div>Departure Date: </div>
+			<div><strong>Departure Date:</strong></div>
 			<div>
 				<%= flight.departs %>
 			</div>
 		</section>
 
 		<br><br>
-		<h2>Destinations</h2>
-		<form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
-			<label>Destination Airport:</label>
-			<select name="airport">
-				<option value="AUS">AUS</option>
-				<option value="DFW">DFW</option>
-				<option value="DEN" selected>DEN</option>
-				<option value="LAX">LAX</option>
-                <option value="SAN">SAN</option>
-			</select>
-            <label>Arrival Date
-                <input type="datetime-local" name="arrival">
-		</label>
-			<input type="submit" value="Add Destination Information">
-		</form>
-		
+        <section id="destinations">
+		    <h2>Destinations</h2>
+		    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+			    <label><strong>Destination Airport:</strong></label>
+			        <select name="airport" class="destinationAirport">
+				        <option value="AUS">AUS</option>
+				        <option value="DFW">DFW</option>
+				        <option value="DEN" selected>DEN</option>
+				        <option value="LAX">LAX</option>
+                        <option value="SAN">SAN</option>
+			        </select>
+             <label>Arrival Date
+                <input type="datetime-local" name="arrival" class="arrivalDate">
+		    </label>
+			<input id= "destinationButton" type="submit" value="Add Destination Information">
+        </form>
 		<% if (flight.destinations.length) { %>
 			<table>
 			  <thead>
@@ -73,6 +74,7 @@
 		  <% } else { %>
 			<h5>No Destination Information Yet</h5>
 		  <% } %>
+        </section>
 	</main>
 </body>
 </html>
